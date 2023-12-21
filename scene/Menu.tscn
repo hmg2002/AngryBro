@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://boshl7hpdwog6"]
+
+[ext_resource type="Texture2D" uid="uid://bmnrjr7cm3rue" path="res://art/background/AngryBrosLoadingScreen.png" id="1_de7ae"]
+[ext_resource type="FontFile" uid="uid://ba87qwatxoltb" path="res://art/Fonts/Kenney Rocket.ttf" id="2_mwi2c"]
+
+[sub_resource type="GDScript" id="GDScript_v6is8"]
+script/source = "extends Control
+
+
+
+func _on_play_pressed():
+	get_tree().change_scene_to_file(\"res://scene/world.tscn\")
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+"
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_v6is8")
+
+[node name="AngryBrosLoadingScreen" type="Sprite2D" parent="."]
+position = Vector2(2.00001, 2.49998)
+scale = Vector2(1.19375, 1.19074)
+texture = ExtResource("1_de7ae")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.5
+offset_right = 50.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_direction = 1
+layout_mode = 2
+
+[node name="Play" type="Button" parent="."]
+modulate = Color(100, 1, 1, 1)
+layout_mode = 2
+offset_left = -146.0
+offset_top = 18.0
+offset_right = 147.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mwi2c")
+theme_override_font_sizes/font_size = 25
+text = "Play"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color(100, 1, 1, 1)
+layout_mode = 2
+offset_left = -145.0
+offset_top = 111.0
+offset_right = 146.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mwi2c")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
